@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project name="HW" basedir="." default="run">
+    
+    <property environment="env"/>
+    <property name="SRC" value="src"/>
+    <property name="BIN" value="bin"/>
+    
+    <path id="classpath">
+        <pathelement path = "bin" />
+    </path>
+    
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    
+    <target name="makedir" depends="clean">
+        <mkdir dir="bin"/>
+    </target>
+    
+    <target name="compileSRC" depends="makedir" >
+        <javac  srcdir="src" destdir="bin" includeantruntime="true">
+        </javac>
+    </target>
+	
+	<target name="run" depends="compileSRC">
+	<java classname="edu.umb.cs681.hw03.PVI">
+		<classpath refid="classpath"></classpath>
+	</java>
+	</target>    
+</project>
+
